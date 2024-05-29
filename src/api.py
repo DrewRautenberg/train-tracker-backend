@@ -1,4 +1,4 @@
-from typing import Union
+import csv
 
 from fastapi import FastAPI
 
@@ -10,7 +10,10 @@ def read_root():
 
 @app.get("/lines")
 def read_root():
-    return {"Red Line": "Red"}, {"Blue Line": "Blue"}, {"Brown Line": "Brn"}
+    with open('../data/lines.csv', newline='') as lineCSV:
+        csv_read = csv.DictReader(lineCSV)
+        lineList =[row for row in csv_read]
+    return lineList
 
 
 """ @app.get("/Stations/{line}")
