@@ -18,7 +18,6 @@ def read_root():
 
 @app.get("/Stations/{line}")
 def read_item(line: str,):
-   
     with open(f"../data/{line}.csv" , newline='') as lineCSV:
         csv_read = csv.DictReader(lineCSV)
         lineList =[row for row in csv_read]
