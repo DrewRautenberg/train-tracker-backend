@@ -1,3 +1,4 @@
+""""Main api file for backend"""
 import csv
 import requests
 import key
@@ -8,10 +9,12 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
+    """"Returns when base api is called"""
     return {"HI"}
 
 @app.get("/lines")
 def read_root():
+    """"Returns list of lines"""
     with open('../data/lines.csv', newline='') as line_csv:
         csv_read = csv.DictReader(line_csv)
         line_list =[row for row in csv_read]
@@ -20,6 +23,7 @@ def read_root():
 
 @app.get("/Stations/{line}")
 def read_item(line: str,):
+    """"Returns stations on line"""
     with open(f"../data/{line}.csv" , newline='') as station_csv:
         csv_read = csv.DictReader(station_csv)
         station_List =[row for row in csv_read]
@@ -27,6 +31,7 @@ def read_item(line: str,):
 
 @app.get("/Trains/{map_id}")
 async def read_item(map_id: str,):
+    """"Returns train eta for station"""
     api_key = key.key
     max_results = 6
     api_url = f"http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=" \
