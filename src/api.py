@@ -13,7 +13,7 @@ def read_root():
     return {"HI"}
 
 @app.get("/lines")
-def read_root():
+def read_line():
     """"Returns list of lines"""
     with open('../data/lines.csv', newline='') as line_csv:
         csv_read = csv.DictReader(line_csv)
@@ -22,7 +22,7 @@ def read_root():
 
 
 @app.get("/Stations/{line}")
-def read_item(line: str,):
+def read_station(line: str,):
     """"Returns stations on line"""
     with open(f"../data/{line}.csv" , newline='') as station_csv:
         csv_read = csv.DictReader(station_csv)
@@ -30,7 +30,7 @@ def read_item(line: str,):
     return station_list
 
 @app.get("/Trains/{map_id}")
-async def read_item(map_id: str,):
+async def read_train(map_id: str,):
     """"Returns train eta for station"""
     api_key = key.key
     max_results = 6
