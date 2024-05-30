@@ -17,7 +17,7 @@ def read_line():
     """"Returns list of lines"""
     with open('../data/lines.csv', encoding="utf-8", newline='') as line_csv:
         csv_read = csv.DictReader(line_csv)
-        line_list =[row for row in csv_read]
+        line_list =[list(csv_read)]
     return line_list
 
 
@@ -26,7 +26,7 @@ def read_station(line: str,):
     """"Returns stations on line"""
     with open(f"../data/{line}.csv", encoding="utf-8", newline='') as station_csv:
         csv_read = csv.DictReader(station_csv)
-        station_list =[row for row in csv_read]
+        station_list =[list(csv_read)]
     return station_list
 
 @app.get("/Trains/{map_id}")
