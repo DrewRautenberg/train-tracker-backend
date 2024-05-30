@@ -4,7 +4,7 @@ import requests
 import os
 from dotenv import load_dotenv, dotenv_values
 load_dotenv() 
-
+api_key = os.getenv("api_key")
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -36,6 +36,6 @@ async def read_train(map_id: str,):
     """"Returns train eta for station"""
     max_results = 6
     api_url = f"http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=" \
-              f"{os.getenv("api_key")}&mapid={map_id}&max={max_results}&outputType=JSON"
+              f"{api_key}&mapid={map_id}&max={max_results}&outputType=JSON"
     response = requests.get(api_url, timeout=30)
     return response.json()
