@@ -26,8 +26,8 @@ def read_item(line: str,):
     """"Returns stations on line"""
     with open(f"../data/{line}.csv" , newline='') as station_csv:
         csv_read = csv.DictReader(station_csv)
-        station_List =[row for row in csv_read]
-    return station_List
+        station_list =[row for row in csv_read]
+    return station_list
 
 @app.get("/Trains/{map_id}")
 async def read_item(map_id: str,):
