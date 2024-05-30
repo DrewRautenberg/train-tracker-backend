@@ -3,7 +3,7 @@ import csv
 import os
 import requests
 from fastapi import FastAPI
-from dotenv import load_dotenv, dotenv_values
+from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("api_key")
 
