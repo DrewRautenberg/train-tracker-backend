@@ -16,6 +16,10 @@ def read_root():
     return lineList
 
 
-""" @app.get("/Stations/{line}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q} """
+@app.get("/Stations/{line}")
+def read_item(line: str,):
+   
+    with open(f"../data/{line}.csv" , newline='') as lineCSV:
+        csv_read = csv.DictReader(lineCSV)
+        lineList =[row for row in csv_read]
+    return lineList
