@@ -1,11 +1,12 @@
 """"Main api file for backend"""
 import csv
-import requests
 import os
+import requests
+from fastapi import FastAPI
 from dotenv import load_dotenv, dotenv_values
 load_dotenv() 
 api_key = os.getenv("api_key")
-from fastapi import FastAPI
+
 
 app = FastAPI()
 
