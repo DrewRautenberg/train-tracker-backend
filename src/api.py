@@ -28,14 +28,13 @@ def read_line():
 def read_station(line: str,):
     """"Returns stations on line"""
     file = f'../data/{line}.csv'
-    file_Exists = os.path.isfile(file)
-    if (file_Exists == True) :
+    file_exists = os.path.isfile(file)
+    if file_exists :
         with open(file, encoding="utf-8", newline='') as station_csv:
             csv_read = csv.DictReader(station_csv)
             station_list =[list(csv_read)]
         return station_list
-    else :
-        raise HTTPException(status_code=404, detail="Item not found")
+    raise HTTPException(status_code=404, detail="Item not found")
 
 @app.get("/Trains/{map_id}")
 async def read_train(map_id: str,):
