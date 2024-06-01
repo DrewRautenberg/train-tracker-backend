@@ -2,7 +2,7 @@
 import csv
 import os
 import requests
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("api_key")
@@ -27,10 +27,15 @@ def read_line():
 @app.get("/Stations/{line}")
 def read_station(line: str,):
     """"Returns stations on line"""
-    with open(f"../data/{line}.csv", encoding="utf-8", newline='') as station_csv:
-        csv_read = csv.DictReader(station_csv)
-        station_list =[list(csv_read)]
-    return station_list
+    file = f'../data/{line}.csv'
+    file_Exists = os.path.isfile(file)
+    if (file_Exists == True) :
+        with open(file, encoding="utf-8", newline='') as station_csv:
+            csv_read = csv.DictReader(station_csv)
+            station_list =[list(csv_read)]
+        return station_list
+    else :
+        raise HTTPException(status_code=404, detail="Item not found")
 
 @app.get("/Trains/{map_id}")
 async def read_train(map_id: str,):
