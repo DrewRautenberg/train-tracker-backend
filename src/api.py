@@ -24,7 +24,7 @@ def read_line():
     return line_list
 
 
-@app.get("/Stations/{line}")
+@app.get("/stations/{line}")
 def read_station(line: str,):
     """"Returns stations on line"""
     file = f'../data/{line}.csv'
@@ -36,7 +36,7 @@ def read_station(line: str,):
         return station_list
     raise HTTPException(status_code=404, detail="Item not found")
 
-@app.get("/Trains/{map_id}")
+@app.get("/trains/{map_id}")
 async def read_train(map_id: str,):
     """"Returns train eta for station"""
     max_results = 6
