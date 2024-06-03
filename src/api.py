@@ -20,7 +20,7 @@ def read_line():
     """"Returns list of lines"""
     with open('../data/lines.csv', encoding="utf-8", newline='') as line_csv:
         csv_read = csv.DictReader(line_csv)
-        line_list =[list(csv_read)]
+        line_list = list(csv_read)
     return line_list
 
 
@@ -32,7 +32,7 @@ def read_station(line: str,):
     if file_exists :
         with open(file, encoding="utf-8", newline='') as station_csv:
             csv_read = csv.DictReader(station_csv)
-            station_list =[list(csv_read)]
+            station_list = list(csv_read)
         return station_list
     raise HTTPException(status_code=404, detail="Item not found")
 
