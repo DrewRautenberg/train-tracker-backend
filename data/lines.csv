@@ -1,9 +1,9 @@
-Line_Code,Line_Name
-Red,Red Line
-Blue,Blue Line
-Brn,Brown Line
-G,Green Line
-Org,Orange Line
-P,Purple Line
-Pink,Pink Line
-Y,Yellow Line
+Line_Code,Line_Name,Color_Code
+Red,Red Line,c60c30
+Blue,Blue Line,00a1de
+Brn,Brown Line,62361b
+G,Green Line,009b3a
+Org,Orange Line,f9461c
+P,Purple Line,522398
+Pink,Pink Line,e27ea6
+Y,Yellow Line,f9e300
